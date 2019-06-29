@@ -1,7 +1,7 @@
 {
   'targets': [
     {
-      'target_name': 'math',
+      'target_name': 'factorial',
       'sources': [
         'factorial.cc'
       ]
