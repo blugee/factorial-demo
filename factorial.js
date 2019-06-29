@@ -1,12 +1,12 @@
 
 (function () {
-	// var addon = require('./build/Release/factorial.node');
-	function factorial(n) {
-    	if (n === 0){
-      		return 1;
-    	}
-    	return n * factorial(n - 1);
-  	}
+	var addon = require('./build/Release/factorial.node');
+	// function factorial(n) {
+ //    	if (n === 0){
+ //      		return 1;
+ //    	}
+ //    	return n * factorial(n - 1);
+ //  	}
 	var express   	= require('express');
 	var app 		= express();
 	var mongod    	= require('mongodb');
@@ -82,9 +82,9 @@
 	})
 	app.post('/getfactorial',function(req,res){
 		if(req.body.number && (req.body.number % 1 === 0)){
-			if(req.body.number > 170){
-				// var sendfactorial = addon.factorial(req.number);
-				var sendfactorial = factorial(req.body.number);
+			if(req.body.number != 0 && req.body.number <= 170){
+				var sendfactorial = addon.factorial(req.number);
+				// var sendfactorial = factorial(req.body.number);
 				res.send({msg:"Factorial of "+req.body.number+" is '"+sendfactorial+"'",err:true,factorial:sendfactorial});
 			}else if(req.body.number == 0){
 				res.send({msg:"Please enter number between 1 & 170!",err:true,factorial:0})	
