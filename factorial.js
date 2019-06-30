@@ -93,8 +93,10 @@
 					sendfactorial = forLoop * addon.factorial(20);
 					console.log("sendfactorial 00  -->",sendfactorial)
 					if(remainNumber > 0){
-						console.log("sendfactorial 01  -->",sendfactorial)
-						sendfactorial = sendfactorial + addon.factorial(remainNumber);	
+						console.log("sendfactorial 01  -->",sendfactorial);
+						var remainFactorial = addon.factorial(remainNumber)
+						console.log("remainFactorial 01  -->",remainFactorial);
+						sendfactorial = sendfactorial + remainFactorial;	
 						console.log("sendfactorial 11  -->",sendfactorial)
 					}
 					// var sendfactorial = addon.factorial(number);
