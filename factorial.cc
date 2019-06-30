@@ -24,30 +24,37 @@ int multiply(int x,int a[],int size)
     carry=carry/10;
     size++;   
   }     
-      return size;
+  return size;
 }
-int factorial(int n){
-  int a[1000],i,size=1;
+// int factorial(int n){
+//   int a[1000],i,size=1;
+//     a[0]=1;
+ 
+//     for(i=2;i<=n;++i) {
+//       size=multiply(i,a,size);        
+//     }
+      
+//     // for(i=size-1;i>=0;--i)
+//     // {
+//     //   cout<<a[i];     
+//     // }
+//     return a;
+// }
+
+void factorial(const v8::FunctionCallbackInfo<v8::Value>& info) {
+  int n=info[0]->NumberValue(),a[1000],i,size=1;
     a[0]=1;
  
     for(i=2;i<=n;++i) {
       size=multiply(i,a,size);        
     }
       
-    // for(i=size-1;i>=0;--i)
-    // {
-    //   cout<<a[i];     
-    // }
-    return a;
-}
-
-void factorial(const v8::FunctionCallbackInfo<v8::Value>& info) {
-  info
-    .GetReturnValue()
-    .Set(v8::Number::New(
-      info.GetIsolate(),
-      factorial(info[0]->NumberValue())
-    ));
+      info
+      .GetReturnValue()
+      .Set(v8::Number::New(
+        info.GetIsolate(),
+        size
+      ));     
 }
 
 void Init(v8::Local<v8::Object> exports) {
