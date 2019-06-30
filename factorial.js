@@ -85,6 +85,7 @@
 		if(number && (number % 1 === 0)){
 			if(number != 0){
 				var sendfactorial = addon.factorial(number);
+				console.log("sendfactorial--->",sendfactorial);
 				// var sendfactorial = factorial(number);
 				if(sendfactorial){
 					res.send({msg:"Factorial of "+number+" is '"+sendfactorial.toString()+"'",err:true,factorial:sendfactorial});
