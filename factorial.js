@@ -85,8 +85,9 @@
 		if(number && (number % 1 === 0)){
 			if(number != 0 && number <= 170){
 				var bigInt = require("big-integer");
-				var sendfactorial = Number(addon.factorial(number));
+				var sendfactorial = addon.factorial(number);
 				var googol = bigInt(sendfactorial);
+				console.log('googol---?',googol)
 				// var sendfactorial = factorial(number);
 				res.send({msg:"Factorial of "+number+" is '"+googol+"'",err:true,factorial:googol});
 			}else if(number == 0){
