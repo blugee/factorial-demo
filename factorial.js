@@ -84,13 +84,33 @@
 		var number = (req.body.number)?Number(req.body.number):0;
 		if(number && (number % 1 === 0)){
 			if(number != 0){
-				var sendfactorial = addon.factorial(number);
-				console.log("sendfactorial--->",sendfactorial);
-				// var sendfactorial = factorial(number);
-				if(sendfactorial){
-					res.send({msg:"Factorial of "+number+" is '"+sendfactorial.toString()+"'",err:true,factorial:sendfactorial});
+				if(number > 20){
+					var forLoop = parseInt(number/20);
+					var remainNumber = number%20;
+					var sendfactorial = 0;
+					for(var i=0;i<=forLoop;i++){
+						sendfactorial = sendfactorial + addon.factorial(number);
+					}
+					if(remainNumber > 0){
+						sendfactorial = sendfactorial + addon.factorial(remainNumber);	
+					}
+					// var sendfactorial = addon.factorial(number);
+					console.log("sendfactorial--->",sendfactorial);
+					// var sendfactorial = factorial(number);
+					if(sendfactorial){
+						res.send({msg:"Factorial of "+number+" is '"+sendfactorial.toString()+"'",err:true,factorial:sendfactorial});
+					}else{
+						res.send({msg:"Factorial of "+number+" is '"+sendfactorial.toString()+"'",err:true,factorial:sendfactorial});
+					}
 				}else{
-					res.send({msg:"Factorial of "+number+" is '"+sendfactorial.toString()+"'",err:true,factorial:sendfactorial});
+					var sendfactorial = addon.factorial(number);
+					console.log("sendfactorial--->",sendfactorial);
+					// var sendfactorial = factorial(number);
+					if(sendfactorial){
+						res.send({msg:"Factorial of "+number+" is '"+sendfactorial.toString()+"'",err:true,factorial:sendfactorial});
+					}else{
+						res.send({msg:"Factorial of "+number+" is '"+sendfactorial.toString()+"'",err:true,factorial:sendfactorial});
+					}
 				}
 			}else if(number == 0){
 				res.send({msg:"Please enter number between 1 & 170!",err:true,factorial:0})	
