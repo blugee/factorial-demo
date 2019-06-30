@@ -88,8 +88,8 @@
 					var forLoop = parseInt(number/20);
 					var remainNumber = number%20;
 					var sendfactorial = 0;
-					for(var i=0;i<=forLoop;i++){
-						sendfactorial = sendfactorial + addon.factorial(number);
+					for(var i=0;i<forLoop;i++){
+						sendfactorial = sendfactorial + addon.factorial(20);
 						console.log("sendfactorial 00  -->",sendfactorial)
 					}
 					if(remainNumber > 0){
