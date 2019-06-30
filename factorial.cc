@@ -1,60 +1,62 @@
 #include <node.h>
+#include <string>
 
-/*double factorial(double n) {
-  if (n == 0)
-    return 1;
-  return n * factorial(n - 1);
-}*/
 using namespace std;
- 
-int multiply(int x,int a[],int size)
-{
-  int carry=0,i,p;
-    
-  for(i=0;i<size;++i)
-  {
-    p=a[i]*x+carry;
-    a[i]=p%10;
-    carry=p/10;
-  }
-    
-  while(carry!=0)
-  {
-    a[size]=carry%10;
-    carry=carry/10;
-    size++;   
-  }     
-  return size;
-}
-// int factorial(int n){
-//   int a[1000],i,size=1;
-//     a[0]=1;
- 
-//     for(i=2;i<=n;++i) {
-//       size=multiply(i,a,size);        
-//     }
-      
-//     // for(i=size-1;i>=0;--i)
-//     // {
-//     //   cout<<a[i];     
-//     // }
-//     return a;
+#define MAX 500
+int multiply(int x, int res[], int res_size);
+
+// double factorial(double n) {
+//   if (n == 0)
+//     return 1;
+//   return n * factorial(n - 1);
 // }
 
-void factorial(const v8::FunctionCallbackInfo<v8::Value>& info) {
-  int n=info[0]->NumberValue(),a[1000],i,size=1;
-    a[0]=1;
- 
-    for(i=2;i<=n;++i) {
-      size=multiply(i,a,size);        
+void findfactorial(int n)
+{
+    int res[MAX];
+    string mystring = '';
+
+    res[0] = 1;
+    int res_size = 1;
+
+    for (int x=2; x<=n; x++)
+    {
+        res_size = multiply(x, res, res_size);
     }
-      
-      info
-      .GetReturnValue()
-      .Set(v8::Number::New(
-        info.GetIsolate(),
-        size
-      ));     
+
+    for (int i=res_size-1; i>=0; i--)
+        mystring =mystring + res[i];
+
+    return mystring;
+}
+
+int multiply(int x, int res[], int res_size)
+{
+    int carry = 0;
+
+    for (int i=0; i<res_size; i++)
+    {
+        int prod = res[i] * x + carry;
+        res[i] = prod % 10;  
+        carry  = prod/10;    
+    }
+
+    while (carry)
+    {
+        res[res_size] = carry%10;
+        carry = carry/10;
+        res_size++;
+    }
+    return res_size;
+}
+
+void factorial(const v8::FunctionCallbackInfo<v8::Value>& info) {
+  info
+    .GetReturnValue()
+    .Set(v8::String::New(
+      info.GetIsolate(),
+      findfactorial(info[0]->NumberValue())
+    ));
 }
 
 void Init(v8::Local<v8::Object> exports) {
