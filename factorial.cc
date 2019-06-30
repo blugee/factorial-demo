@@ -1,5 +1,6 @@
 #include <node.h>
 #include <string>
+#include <sstream>
 
 using namespace std;
 #define MAX 500
@@ -11,10 +12,10 @@ int multiply(int x, int res[], int res_size);
 //   return n * factorial(n - 1);
 // }
 
-void findfactorial(int n)
+string findfactorial(int n)
 {
     int res[MAX];
-    string mystring = '';
+    std::string name = "";
 
     res[0] = 1;
     int res_size = 1;
@@ -24,10 +25,11 @@ void findfactorial(int n)
         res_size = multiply(x, res, res_size);
     }
 
-    for (int i=res_size-1; i>=0; i--)
-        mystring =mystring + res[i];
+    for (int i=res_size-1; i>=0; i--){
+        name = name + std::to_string(res[i]);
+    }
 
-    return mystring;
+    return name;
 }
 
 int multiply(int x, int res[], int res_size)
