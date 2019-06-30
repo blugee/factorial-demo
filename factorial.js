@@ -108,7 +108,7 @@
 						res.send({msg:"Factorial of "+number+" is '"+sendfactorial[0].toString()+"'",err:true,factorial:sendfactorial[0]});
 					}
 				}else{
-					var sendfactorial[0] = addon.factorial(number);
+					var sendfactorial = [addon.factorial(number)];
 					console.log("sendfactorial[0]- for < 20-->",sendfactorial[0]);
 					// var sendfactorial[0] = factorial(number);
 					if(sendfactorial[0]){
