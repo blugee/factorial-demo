@@ -86,11 +86,14 @@
 			if(number != 0){
 				if(number > 20){
 					var forLoop = parseInt(number/20);
-					var remainNumber = number%20;
+					var remainNumber = parseInt(number%20);
+					console.log("forLoop-->",forLoop)
+					console.log("remainNumber-->",remainNumber)
 					var sendfactorial = 0;
 					sendfactorial = forLoop * addon.factorial(20);
 					console.log("sendfactorial 00  -->",sendfactorial)
 					if(remainNumber > 0){
+						console.log("sendfactorial 01  -->",sendfactorial)
 						sendfactorial = sendfactorial + addon.factorial(remainNumber);	
 						console.log("sendfactorial 11  -->",sendfactorial)
 					}
