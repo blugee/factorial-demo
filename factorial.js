@@ -90,12 +90,13 @@
 					var sendfactorial = 0;
 					for(var i=0;i<=forLoop;i++){
 						sendfactorial = sendfactorial + addon.factorial(number);
+						console.log("sendfactorial-->",sendfactorial)
 					}
 					if(remainNumber > 0){
 						sendfactorial = sendfactorial + addon.factorial(remainNumber);	
 					}
 					// var sendfactorial = addon.factorial(number);
-					console.log("sendfactorial--->",sendfactorial);
+					console.log("sendfactorial- for > 20-->",sendfactorial);
 					// var sendfactorial = factorial(number);
 					if(sendfactorial){
 						res.send({msg:"Factorial of "+number+" is '"+sendfactorial.toString()+"'",err:true,factorial:sendfactorial});
@@ -104,7 +105,7 @@
 					}
 				}else{
 					var sendfactorial = addon.factorial(number);
-					console.log("sendfactorial--->",sendfactorial);
+					console.log("sendfactorial- for < 20-->",sendfactorial);
 					// var sendfactorial = factorial(number);
 					if(sendfactorial){
 						res.send({msg:"Factorial of "+number+" is '"+sendfactorial.toString()+"'",err:true,factorial:sendfactorial});
