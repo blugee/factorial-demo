@@ -84,7 +84,7 @@
 		var number = (req.body.number)?Number(req.body.number):0;
 		if(number && (number % 1 === 0)){
 			if(number != 0 && number <= 170){
-				var sendfactorial = addon.factorial(number);
+				var sendfactorial = Number(addon.factorial(number));
 				// var sendfactorial = factorial(number);
 				res.send({msg:"Factorial of "+number+" is '"+sendfactorial+"'",err:true,factorial:sendfactorial});
 			}else if(number == 0){
