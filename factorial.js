@@ -90,10 +90,11 @@
 					var sendfactorial = 0;
 					for(var i=0;i<=forLoop;i++){
 						sendfactorial = sendfactorial + addon.factorial(number);
-						console.log("sendfactorial-->",sendfactorial)
+						console.log("sendfactorial 00  -->",sendfactorial)
 					}
 					if(remainNumber > 0){
 						sendfactorial = sendfactorial + addon.factorial(remainNumber);	
+						console.log("sendfactorial 11  -->",sendfactorial)
 					}
 					// var sendfactorial = addon.factorial(number);
 					console.log("sendfactorial- for > 20-->",sendfactorial);
